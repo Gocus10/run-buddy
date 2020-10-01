@@ -289,8 +289,13 @@ background-position: 80%;
   color: #fce138;
   flex: 1;
 }
-.trainer img {
+.trainer-img {
   width: 100%;
+  min-height: 300px;
+  display: flex;
+  padding: 15px;
+  align-items: flex-end;
+  overflow: hidden;
 }
 .trainer-bio {
   padding: 25px;
@@ -298,12 +303,30 @@ background-position: 80%;
 }
 .trainer-bio h3 {
   font-size: 28px;
+  display: none;
+}
+.trainer-img h3 {
+  position: relative;
+  z-index: 9998;
+  font-size: 28px;
+  margin-bottom: 5px;
+  top: 200px;
+  transition-duration: 0.6s;
 }
 
+.trainer-img h4 {
+  position: relative;
+  z-index: 9998;
+  font-size: 22px;
+  top: 200px;
+  transition-duration: 0.6s;
+  transition-delay: 0.1s;
+}
 .trainer-bio h4 {
   font-weight: lighter;
   font-size: 22px;
   margin-bottom: 15px;
+  display: none;
 }
 .trainer-bio p {
   font-size: 17px;
@@ -426,6 +449,40 @@ background-position: 80%;
 .flex-row {
   display: flex;
 }
+/* ANIMATIONS */
+.trainer-1 {
+  background-image: url("../images/trainer-1.jpg");
+  background-size: cover;
+  position: relative;
+}
+.trainer-2 {
+  background-image: url("../images/trainer-2.jpg");
+  background-size: cover;
+  position: relative;
+}
+.trainer-3 {
+  background-image: url("../images/trainer-3.jpg");
+  background-size: cover;
+  position: relative;
+}
+.trainer-img::after{
+  content: "";
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(rgba(252, 225, 56, 0.3),rgb(2,78,118));
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition-duration: 0.5s;
+}
+.trainer-img:hover:after{
+  opacity: 1;
+
+}
+.trainer:hover .trainer-img h3, .trainer:hover .trainer-img h4 {
+  top: 0px;
+}
 /* MEDIA QUERY FOR SMALLER DESKTOP SCREENS AND SMALLER */
 @media screen and (max-width: 980px) {
   header {
@@ -481,7 +538,12 @@ background-position: 80%;
     flex: 1 100%;
     text-align: center;
   }
-
+.trainer-img h3, .trainer-img h4, .trainer-img::after{
+  display: none;
+}
+.trainer-bio h3, .trainer-bio h4{
+  display: block;
+}
   .step-info {
     flex: 2 100%;
     text-align: center;
@@ -494,7 +556,7 @@ background-position: 80%;
     margin-top: 15px;
     margin-bottom: 15px;
   }
-
+  
   .step-text {
     flex: 100%;  
   }
@@ -516,7 +578,6 @@ background-position: 80%;
     grid-column: 1 / -1;
     grid-row: -1;
   }
-}
 }
 
 /* MEDIA QUERY FOR MOBILE PHONES AND SMALLER */
